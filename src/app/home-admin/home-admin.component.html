@@ -1,0 +1,24 @@
+<!-- home.component.html -->
+<div class="container mt-4">
+
+<!-- app-nav.component.html -->
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Navbar</span>
+      <span fxFlex></span>
+      <button mat-button routerLink="/products">Catagory</button>
+      <span fxHide.lt-sm class="spacer"></span>
+      
+      <button mat-button routerLink="/products">Products</button>
+      <span fxHide.lt-sm class="spacer"></span>
+      <button mat-button routerLink="/cart">Orders</button>
+      <span fxHide.lt-sm class="spacer"></span>
+      <button mat-button routerLink="/login">Users</button>
+      
+      <span fxHide.lt-sm class="spacer"></span>
+      <button mat-button routerLink="/login">Login</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+</div>
+  
