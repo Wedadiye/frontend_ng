@@ -4,7 +4,8 @@
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
     <span>Navbar</span>
     <span fxFlex></span>
-    <button mat-button routerLink="/products">Products</button>
+    <button (click)="viewProducts()" mat-button>View Products</button>
+
     <span fxHide.lt-sm class="spacer"></span>
     <button mat-button routerLink="/cart">Cart</button>
     <span fxHide.lt-sm class="spacer"></span>

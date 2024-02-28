@@ -10,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -18,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     HomeAdminComponent
   ],
   imports: [
+    ProductsModule ,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -40,8 +43,8 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     MatListModule,
     MatCardModule,
     MatToolbarModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

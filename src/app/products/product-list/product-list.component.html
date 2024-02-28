@@ -1,0 +1,17 @@
+<!-- product-list.component.html -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let product of products">
+        <div class="card">
+          <img [src]="product.image" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price }} UN</p>
+            <button  class = "btn btn-info" style="margin-left: 10px"> View</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

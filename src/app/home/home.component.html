@@ -1,6 +1,21 @@
 <!-- home.component.html -->
 <div class="container mt-4">
-    <app-navbar></app-navbar>
+
+<!-- app-nav.component.html -->
+<mat-toolbar color="black">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+    <span>Navbar</span>
+    <span fxFlex></span>
+    <button (click)="toggleProductList()" mat-button>View Products</button>
+
+
+    <span fxHide.lt-sm class="spacer"></span>
+    <button mat-button routerLink="/cart">Cart</button>
+    <span fxHide.lt-sm class="spacer"></span>
+    <button mat-button routerLink="/login">Login</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
     <div class="row">
       <div class="col-md-3">
         <mat-card class="sidebar bg-primary">
@@ -8,17 +23,22 @@
             <mat-card-title>Categories</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <mat-nav-list>
-              <a mat-list-item routerLink="/categories">Category 1</a>
-              <a mat-list-item routerLink="/categories">Category 2</a>
-              <!-- Ajoutez d'autres catégories ici -->
-            </mat-nav-list>
+            <!-- home.component.html -->
+            <!-- home.component.html -->
+
+<mat-nav-list>
+  <a mat-list-item *ngFor="let category of categories" (click)="updateProductListByCategory(category.id)">{{ category.name }}</a>
+</mat-nav-list>
           </mat-card-content>
         </mat-card>
       </div>
       <div class="col-md-9">
         <!-- Contenu principal ici -->
         <h1>Welcome to Our E-commerce Website!</h1>
+        <app-product-list *ngIf="showProductList"></app-product-list>
+
+
+
         <!-- Ajoutez le contenu de votre page d'accueil ici -->
       </div>
     </div>
