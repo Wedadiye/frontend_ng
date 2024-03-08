@@ -1,0 +1,47 @@
+<!-- command.component.html -->
+<form class="container mt-5" (ngSubmit)="submitOrder()">
+  <div class="row">
+    <!-- Colonne pour les champs à remplir -->
+    <div class="col-md-6">
+      <!-- Champs pour l'adresse de livraison -->
+      <div class="mb-3">
+        <label for="address" class="form-label">Adresse de livraison:</label>
+        <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address" required>
+      </div>
+      <div class="mb-3">
+        <label for="pays" class="form-label">Pays:</label>
+        <input type="text" class="form-control" id="pays" name="pays" [(ngModel)]="pays" required>
+      </div>
+
+      <!-- Champs pour les informations de paiement -->
+      <h2 class="mb-3 custom-color">Informations de paiement:</h2>
+      <div class="mb-3">
+        <label for="cardNumber" class="form-label">Numéro de carte:</label>
+        <input type="text" class="form-control" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" required>
+      </div>
+      <div class="mb-3">
+        <label for="expiryDate" class="form-label">Date d'expiration:</label>
+        <input type="date" class="form-control" id="expiryDate" name="expiryDate" [(ngModel)]="expiryDate" required>
+      </div>
+      
+      <!-- Bouton pour soumettre la commande -->
+      <button type="submit" class="btn btn-primary d-block mx-auto">Commander</button>
+
+    </div>
+
+    <!-- Colonne pour les informations sur le panier -->
+    <div class="col-md-6">
+      <!-- Affichage des produits du panier -->
+      <h2 class="mb-3 custom-color">Produits dans le panier:</h2>
+      <ul class="list-group mb-3">
+        <li class="list-group-item" *ngFor="let item of cartItems">
+          {{ item.name }} - Quantité: {{ item.quantity }} - Prix unitaire: {{ item.price }}
+        </li>
+      </ul>
+
+      <!-- Affichage de la somme totale -->
+      <h1 class="mb-3 custom-color text-md-end">Total: {{ totalSum }}</h1>
+    </div>
+  </div>
+</form>
+

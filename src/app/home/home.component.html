@@ -4,15 +4,19 @@
 <!-- app-nav.component.html -->
 <mat-toolbar color="black">
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-    <span>Navbar</span>
+    <span>RimVente</span>
     <span fxFlex></span>
-    <button (click)="toggleProductList()" mat-button>View Products</button>
-
+    <button routerLink="produits" (click)="showAllProducts()" mat-button>View Products</button>
+    
 
     <span fxHide.lt-sm class="spacer"></span>
-    <button mat-button routerLink="/cart">Cart</button>
+    <button mat-button routerLink="cart">Cart</button>
+    
     <span fxHide.lt-sm class="spacer"></span>
-    <button mat-button routerLink="/login">Login</button>
+    <button mat-button  routerLink="profile">MyProfile</button>
+    <span fxHide.lt-sm class="spacer"></span>
+    <button mat-button (click)="logout()">Logout</button>
+
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -23,9 +27,7 @@
             <mat-card-title>Categories</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <!-- home.component.html -->
-            <!-- home.component.html -->
-
+  
 <mat-nav-list>
   <a mat-list-item *ngFor="let category of categories" (click)="updateProductListByCategory(category.id)">{{ category.name }}</a>
 </mat-nav-list>
@@ -35,7 +37,9 @@
       <div class="col-md-9">
         <!-- Contenu principal ici -->
         <h1>Welcome to Our E-commerce Website!</h1>
-        <app-product-list *ngIf="showProductList"></app-product-list>
+        <router-outlet></router-outlet> <!-- Composant en fonction de la route -->
+
+        <!--<app-product-list *ngIf="showProductList"></app-product-list>-->
 
 
 

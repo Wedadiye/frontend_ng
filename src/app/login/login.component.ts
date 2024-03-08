@@ -39,6 +39,7 @@ export class LoginComponent {
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceLoginService } from '../services/service-login.service';
+import Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -51,7 +52,8 @@ export class LoginComponent {
   password: string = '';
   userInfo: any; // Déclaration de la variable userInfo
 
-  constructor(private authService: ServiceLoginService, private router: Router) {}
+  constructor(private authService: ServiceLoginService, 
+    private router: Router ) {}
 
   login() {
     this.authService.login(this.email, this.password)
@@ -67,21 +69,29 @@ export class LoginComponent {
                   // Stocker les informations de l'utilisateur dans le local storage, par exemple
                   localStorage.setItem('currentUser', JSON.stringify(this.userInfo));
                   // Naviguer vers la page d'accueil
+
                   this.router.navigate(['/home']);
                 } else {
+
+                  localStorage.setItem('currentUser', JSON.stringify(this.userInfo));
                   this.router.navigate(['/homeAdmin']);
                 }
               },
 
               error => {
                 console.error('Impossible de récupérer les informations de l\'utilisateur');
+                
               }
             );
         },
         
       error => {
         console.error('Échec de la connexion', error);
-        // Gérer les erreurs ici, par exemple rediriger vers une page d'erreur ou afficher un message d'erreur
+         Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: 'Mot de passe ou e-mail incorrect',
+        });
       }
       );
       

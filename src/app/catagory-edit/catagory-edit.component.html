@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="mb-4">Modifier la catégorie</h2>
+        <form>
+          <div class="form-group">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" [(ngModel)]="data.name" name="name" class="form-control mb-3">
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="data.description" name="description" class="form-control mb-3"></textarea>
+          </div>
+          <button (click)="updateCategory()" class="btn btn-primary">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>

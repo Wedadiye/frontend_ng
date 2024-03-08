@@ -15,12 +15,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
   exports: [ProductListComponent] ,// 
   imports: [
     CommonModule,
-    
+   /* 
     RouterModule.forChild([
       { path: 'produits', component: ProductListComponent },
       { path: 'produits/:id', component: ProductDetailsComponent } // Ajout du chemin pour les détails du produit
 
     ])
+    */
   ]
 })
 export class ProductsModule { }

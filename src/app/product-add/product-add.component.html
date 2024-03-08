@@ -1,0 +1,32 @@
+
+<div class="add-product-container">
+  <h2>Add New Product</h2>
+  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Stock</mat-label>
+      <input matInput formControlName="stock" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <input type="file" (change)="onFileSelected($event)"> <!-- Remove mat-form-field wrapper from here -->
+
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+  </form>
+</div>

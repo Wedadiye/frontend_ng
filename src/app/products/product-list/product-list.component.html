@@ -1,17 +1,22 @@
+
 <!-- product-list.component.html -->
 <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-3" *ngFor="let product of products">
-        <div class="card">
-          <img [src]="product.image" class="card-img-top" alt="{{ product.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.price }} UN</p>
-            <button  class = "btn btn-info" style="margin-left: 10px"> View</button>
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let product of products">
+      <div class="card h-100">
+        <img [src]="product.image" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Product Image">
+        <div class="card-body">
+          <h1 class="card-title">{{ product.name }}</h1>
+          <h3 class="card-text">Stock: {{ product.stock }}</h3>
+          <p class="card-text">Prix: {{ product.price }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+          <button (click)="productDetails(product.id)" class="btn btn-info mx-2">View</button> <!-- Ajout de la classe mr-2 -->
+          <button (click)="addToCart(product.id)"  class="btn btn-primary mx-2">Add to Cart</button> <!-- Ajout de la classe ml-2 -->
+        
 
-          </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

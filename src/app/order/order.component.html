@@ -1,0 +1,47 @@
+
+<!-- Tableau pour afficher les commandes -->
+<div class="container mt-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Address</th>
+          <th>Pays</th>
+          <th>Total</th>
+          <th>Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commande of commandes">
+          <td>{{ commande.user }}</td>
+          <td>{{ commande.address }}</td>
+          <td>{{ commande.pays }}</td>
+          <td>{{ commande.total }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let item of commande.items">
+                <div class="row">
+                  <!-- Libellés pour Produit et Quantité -->
+                  <div class="col-md-6">
+                    <p>Produit</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Quantité</p>
+                  </div>
+                  <!-- Colonnes Produit -->
+                  <div class="col-md-6">
+                    <p>{{ item.product_name }}</p>
+                  </div>
+                  <!-- Colonnes Quantité -->
+                  <div class="col-md-6">
+                    <p>{{ item.quantity }}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,27 @@
+
+<!-- Affichage de la somme totale -->
+<!--<p>Total: {{ totalSum }}</p>-->
+<div *ngFor="let item of cartItems" class="mat-card mat-elevation-z3 mb-3">
+  <div class="row g-0">
+      <div class="col-md-8">
+          <div class="card-body">
+              <h5 class="card-title"><strong>{{ item.name }}</strong></h5>
+              <p class="card-text">Price: {{ item.price }}</p>
+              <div class="d-flex">
+                  <div class="flex-grow-1">
+                      <p class="card-text">Quantity: <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item)" class="form-control form-control-sm"></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 d-flex align-items-center justify-content-end">
+          <button mat-icon-button color="warn" (click)="deleteFromCart(item.product_id)">
+              <mat-icon>delete</mat-icon>
+          </button>
+      </div>
+  </div>
+  </div>
+
+<p>Total: {{ totalSum }}</p>
+<button (click)="goToCheckout()"  [disabled]="checkoutDisabled">Checkout</button>
+

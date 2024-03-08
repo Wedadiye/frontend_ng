@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ServiceCatagorieService } from '../services/service-catagorie.service';
 import { Router } from '@angular/router';
 import { ProductService } from '../products/product.service';
+import { ServiceLoginService } from '../services/service-login.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent {
 
   
   constructor(
-    public router: Router,private categoryService: ServiceCatagorieService,private productService: ProductService) { }
+    public router: Router,    private loginService: ServiceLoginService // Injectez le service ServiceLoginService
+    ,private categoryService: ServiceCatagorieService,private productService: ProductService) { }
     showProductList: boolean = false;
 
   
@@ -27,6 +29,7 @@ export class HomeComponent {
         console.error('Error fetching categories:', error);
       }
     );
+    this.getProducts();
   }
 /*
   toggleProductList() {
@@ -35,6 +38,24 @@ export class HomeComponent {
   }
   */
  
+  getProducts(): void {
+    
+    this.productService.getProducts().subscribe(
+      products => {
+        this.productService.updateProducts(products);
+      },
+      error => {
+        console.error('Error fetching products:', error);
+      }
+    );
+  }
+
+
+  // Méthode pour afficher tous les produits
+  showAllProducts(): void {
+    this.getProducts();
+  }
+
   toggleProductList() {
 
     this.showProductList = !this.showProductList;
@@ -50,14 +71,32 @@ export class HomeComponent {
     }
   }
   
+
   updateProductListByCategory(categoryId: number) {
     // Mettez à jour les produits en fonction de la catégorie sélectionnée
+   
     this.productService.getProductsByCategory(categoryId).subscribe(
       products => {
         this.productService.updateProducts(products);
       },
       error => {
         console.error('Error fetching products by category:', error);
+      }
+    );
+  }
+  
+   // Méthode pour déconnecter l'utilisateur
+   logout(): void {
+    this.loginService.logout().subscribe(
+      () => {
+        // En cas de succès, effacez le token localement, les informations de l'utilisateur et redirigez l'utilisateur vers la page de connexion
+        localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/login']);
+      },
+      error => {
+        console.error('Error logging out:', error);
+        // Gérez les erreurs de déconnexion ici
       }
     );
   }

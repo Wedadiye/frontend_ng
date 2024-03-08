@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <div class="row justify-content-end">
+      <div class="col-md-4 text-right">
+        <button mat-raised-button color="primary" (click)="openAddDialog()">
+          <mat-icon>add</mat-icon> Add new
+        </button>
+      </div>
+    </div>
+    
+    <mat-table [dataSource]="products">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ product.id }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ product.name }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ product.description }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ product.price }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="stock">
+        <mat-header-cell *matHeaderCellDef>Stock</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ product.stock }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ product.category }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+          <img [src]="product.image" alt="Product Image" style="width: 100px;">
+        </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+          <button mat-icon-button (click)="openEditDialog(product)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteProduct(product.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="['id', 'name', 'description', 'price', 'stock', 'category','image', 'actions']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['id', 'name', 'description', 'price', 'stock', 'category','image', 'actions'];"></mat-row>
+    </mat-table>
+  </div>
+  
